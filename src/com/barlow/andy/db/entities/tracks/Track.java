@@ -5,34 +5,22 @@ package com.barlow.andy.db.entities.tracks;
  */
 public class Track implements iTrack {
     protected int id;
-    protected int getArtistId;
-    protected int getAlbumId;
+    protected int artistId;
+    protected int albumId;
     protected String trackName;
     protected double trackLength;
 
 
     public Track() {
-        this.id = Integer.parseInt(null);
-        this.getArtistId = Integer.parseInt(null);
-        this.getAlbumId = Integer.parseInt(null);
-        this.trackName = null;
-        this.trackLength = Double.parseDouble(null);
 
     }
 
-    public Track(int id, int getArtistId, int getAlbumId, String trackName, double trackLength) {
-
-        this.id = id;
-        this.getArtistId = getArtistId;
-        this.getAlbumId = getAlbumId;
+    public Track(int getArtistId, int getAlbumId, String trackName, double trackLength) {
+        this.artistId = getArtistId;
+        this.albumId = getAlbumId;
         this.trackName = trackName;
         this.trackLength = trackLength;
 
-    }
-
-    @Override
-    public void setID(int id) {
-        this.id = id;
     }
 
     @Override
@@ -41,18 +29,26 @@ public class Track implements iTrack {
     }
 
     @Override
+    public void setID(int id) {
+        this.id = id;
+    }
+
+    @Override
     public int getArtistID() {
-        return getArtistId;
+        return artistId;
+    }
+
+    public void setArtistID(int artistId) {
+        this.artistId = artistId;
     }
 
     @Override
     public int getAlbumID() {
-        return getAlbumId;
+        return albumId;
     }
 
-    @Override
-    public void setTrackName(String trackName) {
-        this.trackName = trackName;
+    public void setAlbumID(int albumId) {
+        this.albumId = albumId;
     }
 
     @Override
@@ -61,12 +57,17 @@ public class Track implements iTrack {
     }
 
     @Override
-    public void setTrackLength(double trackLength) {
-        this.trackLength = trackLength;
+    public void setTrackName(String trackName) {
+        this.trackName = trackName;
     }
 
     @Override
     public double getTrackLength() {
         return trackLength;
+    }
+
+    @Override
+    public void setTrackLength(double trackLength) {
+        this.trackLength = trackLength;
     }
 }

@@ -1,18 +1,18 @@
-package com.barlow.andy.db.dao.tracks;
+package com.barlow.andy.db.dao.albums;
 
 import com.barlow.andy.db.ConnectionUtil;
-import com.barlow.andy.db.entities.tracks.Track;
+import com.barlow.andy.db.entities.albums.Album;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andy on 4/21/2015.
+ * Created by andy on 4/22/2015.
  */
-public class tracksDBmethods implements iTracksDBmethods {
+public class albumDBmethods implements iAlbumDBmethods {
     @Override
-    public void tracksCreateTable() {
+    public void albumCreateTable() {
         Connection c = null;
         Statement sql = null;
 
@@ -20,7 +20,7 @@ public class tracksDBmethods implements iTracksDBmethods {
             c = ConnectionUtil.getConnection();
             sql = c.createStatement();
 
-            sql.execute("CREATE TABLE IF NOT EXISTS track (id integer primary key unique, track_name varchar(100), track_length DOUBLE, artist_id INTEGER, album_id INTEGER)");
+            sql.execute("CREATE TABLE IF NOT EXISTS album (id integer primary key unique, album_title varchar(100), release_year INTEGER, artist_id INTEGER)");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -42,20 +42,20 @@ public class tracksDBmethods implements iTracksDBmethods {
     }
 
     @Override
-    public void insert(Track track) {
+    public void insert(Album album) {
         Connection c = null;
         PreparedStatement preparedStatement = null;
 
         try {
             c = ConnectionUtil.getConnection();
-            preparedStatement = c.prepareStatement("INSERT INTO track(track_name, track_length, artist_id, album_id)"
-                    + "Values(?,?,?,?)");
-            preparedStatement.setString(1, track.getTrackName());
-            preparedStatement.setDouble(2, track.getTrackLength());
-            preparedStatement.setInt(3, track.getArtistID());
-            preparedStatement.setInt(4, track.getAlbumID());
+            preparedStatement = c.prepareStatement("INSERT INTO album(album_title, release_year, artist_id)"
+                    + "Values(?,?,?)");
+            preparedStatement.setString(1, album.getAlbumTitle());
+            preparedStatement.setInt(2, album.getReleaseYear());
+            preparedStatement.setInt(3, album.getArtistID());
             preparedStatement.executeUpdate();
-            System.out.println("INSERT INTO track");
+            System.out.println("INSERT INTO album + "
+                    + "Values(" + album.getAlbumTitle() + "," + album.getReleaseYear());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -78,25 +78,23 @@ public class tracksDBmethods implements iTracksDBmethods {
     }
 
     @Override
-    public List<Track> selectAll() {
-        List<Track> tracks = new ArrayList<Track>();
+    public List<Album> selectAll() {
+        List<Album> albums = new ArrayList<Album>();
         Connection c = null;
         Statement sql = null;
         ResultSet result = null;
         try {
             c = ConnectionUtil.getConnection();
             sql = c.createStatement();
-            result = sql.executeQuery("SELECT * FROM track");
+            result = sql.executeQuery("SELECT * FROM album");
 
             while (result.next()) {
-                Track track = new Track();
-                track.setID(result.getInt("id"));
-                track.setTrackName(result.getString("track_name"));
-                track.setTrackLength(result.getDouble("track_length"));
-                track.setAlbumID(result.getInt("album_id"));
-                track.setArtistID(result.getInt("artist_id"));
+                Album album = new Album();
+                album.setID(result.getInt("id"));
+                album.setAlbumTitle(result.getString("album_title"));
+                album.setReleaseYear(result.getInt("release_year"));
 
-                tracks.add(track);
+                albums.add(album);
             }
 
         } catch (Exception e) {
@@ -125,20 +123,20 @@ public class tracksDBmethods implements iTracksDBmethods {
             }
         }
 
-        return tracks;
+        return albums;
     }
 
     @Override
-    public void delete(String trackToDelete) {
+    public void delete(String albumToDelete) {
         Connection c = null;
         PreparedStatement sql = null;
 
         try {
             c = ConnectionUtil.getConnection();
-            sql = c.prepareStatement("DELETE FROM track WHERE track_name = ?");
-            sql.setString(1, trackToDelete);
+            sql = c.prepareStatement("DELETE FROM album WHERE album_title = ?");
+            sql.setString(1, albumToDelete);
             sql.executeUpdate();
-            System.out.println("Deleted: " + trackToDelete);
+            System.out.println("Deleted: " + albumToDelete + " album..");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,21 +159,20 @@ public class tracksDBmethods implements iTracksDBmethods {
     }
 
     @Override
-    public void update(Track track, String trackName) {
+    public void update(Album album, String albumName) {
         Connection c = null;
         PreparedStatement sql = null;
 
         try {
             c = ConnectionUtil.getConnection();
-            sql = c.prepareStatement("UPDATE track SET track_name" +
-                    "= ?, track_length = ?, artist_id = ?, album_id = ? WHERE track_name = ?");
-            sql.setString(1, track.getTrackName());
-            sql.setDouble(2, track.getTrackLength());
-            sql.setInt(3, track.getArtistID());
-            sql.setInt(4, track.getAlbumID());
-            sql.setString(5, trackName);
+            sql = c.prepareStatement("UPDATE album SET " +
+                    "album_title = ?, release_year = ? WHERE album_title = ?");
+            sql.setString(1, album.getAlbumTitle());
+            sql.setInt(2, album.getReleaseYear());
+            sql.setString(3, albumName);
             sql.executeUpdate();
-            System.out.println("UPDATE artist");
+            System.out.println("UPDATE album SET " +
+                    "album title = " + album.getAlbumTitle() + " release year = " + album.getReleaseYear() + " WHERE album name =  " + albumName);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -197,3 +194,4 @@ public class tracksDBmethods implements iTracksDBmethods {
         }
     }
 }
+
