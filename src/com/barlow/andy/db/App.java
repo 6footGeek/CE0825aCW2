@@ -1,3 +1,5 @@
+package com.barlow.andy.db;
+
 import com.barlow.andy.db.dao.albums.albumDBmethods;
 import com.barlow.andy.db.dao.artists.artistDBmethods;
 import com.barlow.andy.db.dao.tracks.tracksDBmethods;
@@ -61,6 +63,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Artist artist = new Artist();
         artistDBmethods method = new artistDBmethods();
+        method.artistCreateTable();
         int menu;
         boolean exit = false;
         do {
