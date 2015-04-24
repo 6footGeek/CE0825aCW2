@@ -8,8 +8,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andy on 4/22/2015.
+ *       albumDBmethods keeps the dao methods seperate from the album class for future ease of use.
+ *
+ *
+ *      artistCreateTable() <-- create table in DB if not exist
+ *      List<Artist> selectAll() <-- lists all contacts in db
+ *      insert() <-- insert method
+ *      update() <-- update method
+ *
+ *
+ *
+ *
+ *          albumCreateTable();
+ *              Creates a contacts table in the DB if it doesnt exist.
+ *              Sets up columns for int id, first_name varchar(100) and last_name varchar(100).
+ *
+ *          insert();
+ *              insert is the DB insert function. inserts album object taken as parameter.
+ *
+ *
+ *          delete();
+ *              delete is the DB delete function. It deletes row from database where id = id that is passed as int parameter.
+ *
+ *
+ *          selectAll();
+ *              method allows all records to be displayed in format of appropriate data fields. Just used for display / test purposes.
+ *
+ *          update();
+ *              update method allows the updating of previously saved info in the contact DB. it takes an object of the updated data and the unique id of the contact to be updated.
+ *
  */
+
 public class albumDBmethods implements iAlbumDBmethods {
     @Override
     public void albumCreateTable() {

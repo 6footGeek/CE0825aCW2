@@ -2,6 +2,7 @@ package com.barlow.andy.db.entities.albums;
 
 /**
  * Created by andy on 4/22/2015.
+ * Interface for Albums
  */
 public interface iAlbum {
     int getID();

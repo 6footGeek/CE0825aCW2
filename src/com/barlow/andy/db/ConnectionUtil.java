@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 /**
  * Created by andy on 4/8/2015.
  *
- *          Simple ConnectionUtil class for connecting to the db (SQL) with auth.
+ *          Simple ConnectionUtil class for connecting to the db (SQLite) with auth.
  */
 
 

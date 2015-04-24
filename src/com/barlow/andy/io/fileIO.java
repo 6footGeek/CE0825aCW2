@@ -4,6 +4,13 @@ import java.io.*;
 
 /**
  * Created by Andy on 11/03/15.
+ *
+ *      Simple example of simple IO operations
+ *      Creates a new file.txt if it doesnt exist, writes a sting to it.
+ *      fileRead() reads it back to console.
+ *      then it will append data to it using fileAppend() method.
+ *
+ *      Very simple, uses buffered readers and print writers.
  */
 public class fileIO {
     BufferedReader bufferedRead;

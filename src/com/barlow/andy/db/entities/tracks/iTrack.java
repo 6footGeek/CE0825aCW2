@@ -2,6 +2,7 @@ package com.barlow.andy.db.entities.tracks;
 
 /**
  * Created by andy on 4/21/2015.
+ * Interface for tracks
  */
 public interface iTrack {
     public void setID(int id);

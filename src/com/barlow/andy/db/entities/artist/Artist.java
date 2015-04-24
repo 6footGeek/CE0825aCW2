@@ -3,19 +3,9 @@ package com.barlow.andy.db.entities.artist;
 /**
  * Created by andy on 4/8/2015.
  *
- *      My version of a Contact class using OOP
- *      This class takes care of the getters and setters for the Contact object.
  *
- *      int id;
- *      String firstName;
- *      String lastName;
+ *      This class takes care of the getters and setters for the Artist object.
  *
- *
- *      Removed 2 methods from interface as seemed better to keep them in a seperate class -
- *      the following methods are now located in artistDBmethods.java
- *
- *      void save(); (also renamed to insert())
- *      void delete();
  *
  */
 

@@ -11,10 +11,10 @@ import java.util.List;
  *      artistDBmethods keeps the dao methods seperate from the artist class for future ease of use.
  *
  *
- *      contactCreateTable() <-- create table in DB if not exist
- *      List<Contact> selectAll() <-- lists all contacts in db
- *      insert() <-- instead of "save();"
- *      update() <-- update method seperate from save()/insert() for cleaner solution
+ *      artistCreateTable() <-- create table in DB if not exist
+ *      List<Artist> selectAll() <-- lists all contacts in db
+ *      insert() <-- insert method
+ *      update() <-- update method
  *
  *
  *

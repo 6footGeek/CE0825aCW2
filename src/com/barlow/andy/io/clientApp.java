@@ -11,7 +11,7 @@ public class clientApp {
 
 
         fileIO x = new fileIO();
-      //  x.fileWriter("This is writing..");
+        x.fileWriter("This is writing..");
         x.fileAppend("This is appending..");
         x.fileRead();
 

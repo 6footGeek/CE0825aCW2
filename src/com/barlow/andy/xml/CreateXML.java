@@ -1,8 +1,6 @@
 package com.barlow.andy.xml;
 
-/**
- * Created by Andy on 23/04/15.
- */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,7 +20,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-
+/**
+ * Created by Andy on 23/04/15.
+ *
+ * CreateXML():
+ *      This method creates an artist xml file based on the Document builder factory.
+ * getArtist():
+ *      This method allows the creation of individual artist objects passed to the createXML method appendChild routine.
+ * readXML():
+ *      Super simple xml reader method.
+ *
+ *
+ */
 public class CreateXML {
 
    protected void CreateXML() {
@@ -41,12 +50,14 @@ public class CreateXML {
 
             // output DOM XML to console
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
+            // clean up output for readability
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             DOMSource source = new DOMSource(doc);
             StreamResult file = new StreamResult(new File("artists.xml"));
             StreamResult console = new StreamResult(System.out);
-            //output to file and console
+            //output to file and consoler
             transformer.transform(source, file);
             transformer.transform(source, console);
 

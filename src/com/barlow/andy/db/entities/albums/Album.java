@@ -3,6 +3,7 @@ package com.barlow.andy.db.entities.albums;
 
 /**
  * Created by andy on 4/21/2015.
+ *      This class takes care of the getters and setters for the Album object.
  */
 public class Album implements iAlbum {
     protected int id;

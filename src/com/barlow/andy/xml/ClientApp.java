@@ -2,6 +2,9 @@ package com.barlow.andy.xml;
 
 /**
  * Created by Andy on 23/04/15.
+ *
+ * Simple client app frontend that generates and reads an XML file.
+ *
  */
 public class ClientApp {
     public static void main(String[] args) {
