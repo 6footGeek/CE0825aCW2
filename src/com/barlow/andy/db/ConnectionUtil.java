@@ -1,20 +1,7 @@
 package com.barlow.andy.db;
-
-/**
- * Created by andy on 4/21/2015.
- */
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/**
- * Created by andy on 4/8/2015.
- *
- *
- *      Just some usage code for showing DB functionality
- *
- *
- */
 
 /**
  * Created by andy on 4/8/2015.
